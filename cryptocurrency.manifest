@@ -1,0 +1,12 @@
+CACHE MANIFEST
+
+offline/index.html
+offline/style.css
+offline/index.js
+offline/audio.js
+offline/geolocation.js
+offline/marquee.js
+offline/offline.js
+offline/svg.js
+offline/table.js
+offline/validate.js
