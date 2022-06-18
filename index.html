@@ -57,64 +57,55 @@
     <main>
       <section data-route="#other-main">
         <div class="main">
-          <article class="info">
-            <div id="navigation">
-              <button id="popular-crypto">
-                What is the most popular cryptocurrency in your country?
-              </button>
-              <p id="country"></p>
-              <div id="bitcoin-info"></div>
-            </div>
-            <h2>Podcast</h2>
-            <audio controls>
-              <source src="podcast.mp3" type="audio/mp3" />
-            </audio>
-          </article>
-
-          <div class="main-menu">
-            <div id="converter" class="box">
+          <div class="main-info">
+            <article class="info">
+              <h2>Podcast</h2>
+              <audio controls>
+                <source src="podcast.mp3" type="audio/mp3" />
+              </audio>
+            </article>
+            <div id="converter" class="box right">
               <h2>Cryptocurrency converter</h2>
               <div id="input-conv">
                 <form id="amount">
-                  Amount to convert
+                  <label>Amount to convert:</label>
                   <input
                     type="text"
                     required
                     name="converter"
                     id="amount_input"
                     placeholder="Enter a number..."
-                  />
+                  /><span> $</span>
                 </form>
               </div>
               <div id="error-converter"></div>
               <br />
-              <select name="currency" id="currency">
-                <option id="bitcoin" value="">Bitcoin(BTC)</option>
-                <option id="etherium" value="">Ethereum(ETH)</option>
-                <option id="ripple" value="">Ripple(XRP)</option>
-                <!-- <option id="dollar" value="">Dollar($)</option> -->
-              </select>
-              <span>Convert to Dollars</span>
-              <!-- <select name="currency1" id="currencyTo">
-                <option id="dollar" value="">Dollar($)</option>
-                <option id="bitcoin" value="">Bitcoin(BTC)</option>
-                <option id="etherium" value="">Ethereum(ETH)</option>
-                <option id="ripple" value="">Ripple(XRP)</option></select
-              ><br /> -->
-              <span id="result"></span><br />
-              <div id="buttons-converter">
-                <button id="convert">Convert</button>
-                <button id="reset">Reset</button>
+              <div class="conv-curr">
+                <div>
+                  <span>From:</span>
+                  <select name="currency" id="currency">
+                    <option id="bitcoin" value="">Bitcoin(BTC)</option>
+                    <option id="etherium" value="">Ethereum(ETH)</option>
+                    <option id="ripple" value="">Ripple(XRP)</option>
+                  </select>
+                  <br /><br />
+                  <span>To: Dollars</span>
+                </div>
+                <br />
+                <div id="buttons-converter">
+                  <button id="convert">Convert</button>
+                  <button id="reset">Reset</button>
+                </div>
+                <span id="result"></span>
               </div>
             </div>
-
-            <div id="chart" class="box">
-              <figure>
-                <figcaption>Cryptocurrency price</figcaption>
-                <div class="buttons"></div>
-                <div class="chart-currency-name"></div>
-              </figure>
-            </div>
+          </div>
+          <div id="chart" class="main-chart box">
+            <figure>
+              <figcaption>Cryptocurrency price</figcaption>
+              <div class="buttons"></div>
+              <div class="chart-currency-name"></div>
+            </figure>
           </div>
         </div>
       </section>

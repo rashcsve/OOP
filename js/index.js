@@ -2,7 +2,6 @@ class App {
   _cryptocoins;
   constructor() {
     this._pages = document.querySelectorAll("section");
-    this._checkConnection();
     this.init();
   }
 
@@ -10,37 +9,15 @@ class App {
     this._cryptocoins = coins;
   }
 
-  async init() {
-    const isOnline = await this._checkConnection();
-    if (isOnline) {
-      // TODO: Fix getting data from API
-      const apiCryptocoins = await this.getAPICryptocoins();
-      this.setCryptocoins(apiCryptocoins);
-    } else {
-      this.setCryptocoins(CRYPTOCOINS);
-    }
-    console.log(this._cryptocoins);
+  init() {
+    this.setCryptocoins(CRYPTOCOINS);
     this._route();
     this._start();
   }
 
-  async _checkConnection() {
-    // const isOnline = navigator.onLine;
-    console.log("check");
-    // return isOnline;
-    return false;
-  }
-
-  async getAPICryptocoins() {
-    try {
-    } catch (e) {
-      console.log(e);
-      return e;
-    }
-  }
-
   _route() {
     const hash = window.location.hash;
+    console.log(hash);
     switch (hash) {
       case "#table-main":
         this._changePage(hash);
@@ -54,6 +31,7 @@ class App {
 
   _changePage(section) {
     this._pages.forEach((page) => {
+      console.log(page);
       if (page.getAttribute("data-route") === section) {
         page.classList.add("is-visible");
       } else {
@@ -65,6 +43,7 @@ class App {
   _start() {
     // Route Changes
     window.addEventListener("popstate", (event) => {
+      console.log(event);
       this._route();
     });
 
@@ -81,23 +60,5 @@ class App {
     t.init();
   }
 }
-
-//metoda pro pristup k datum z API pro kryptomeny
-// Page.prototype._init = function () {
-//   var api_url = "https://api.coinmarketcap.com/v1/ticker/";
-//   var self = this;
-//   $.get(api_url, function (data, status) {
-//     // console.log(status)
-//     //pokud data jsou, startuju aplikaci
-//     if (status === "success") {
-//       self._route();
-//       self._cryptocoins = data;
-//       self._start(true);
-//     } else {
-//       return;
-//       console.error("Data loading failed");
-//     }
-//   });
-// };
 
 new App();
