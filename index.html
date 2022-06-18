@@ -1,129 +1,145 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cryptocurrency.manifest"> 
-  <head> 
-    <meta charset="utf-8"> 
-     <title>Cryptocurrency</title> 
-     <link rel="stylesheet" href="style.css"> 
-     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
-      <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-  </head> 
- 
-<body> 
+<html lang="en" manifest="cryptocurrency.manifest">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cryptocurrency</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      rel="stylesheet"
+    /> -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+      integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-  <div id="nav-background">
-    <div id="nav-container">
-      <header id="nav-header">
-        <h1 id="nav-logo"> Cryptocurrency</h1>
-      </header>
+  <body>
+    <div id="nav-background">
+      <div id="nav-container">
+        <header id="nav-header">
+          <h1 id="nav-logo">Cryptocurrency</h1>
+        </header>
 
-      <nav>
-        <ul class="nav-ul">
-          <li><a href="#other-main" class="nav-link">Main</a></li>
-          <li><a href="#table-main" class="nav-link">Table</a></li>
-          <li>
-            <svg viewbox="0 0 100 50" width="100" height="50" id="svg-coin">
-             <circle cx="40" cy="25" r="25" fill="#ffcc00"/>
-             <line x1="34" y1="10" x2="34" y2="40" stroke="#34495e" stroke-width="3.5"/>
-             <path d="M34,10 C34,10 65,16 34,23 C34,23 70,30 34,40" stroke="#34495e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0"/>
-            </svg>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-
-  <div class="marquee"></div>
-<main>
-  <section data-route="#other-main">
-      <div class="main">
-      <article class="info">
-        <div id="navigation">
-          <button id="popular-crypto">What is the most popular cryptocurrency in your country?</button>
-          <p id="country"></p>
-          <div id="bitcoin-info"></div>
-        </div>
-        <h2>Podcast</h2>
-        <audio controls>
-          <source src="podcast.mp3"  type="audio/mp3" />
-        </audio>
-      </article>
-
-      <div class="main-menu">
-  
-        <div id="converter" class="box">
-          <h2>Cryptocurrency converter</h2>
-          <div id="input-conv"><form id="amount">Amount to convert <input type="text" required name="converter" id="amount_input" placeholder="Enter a number..."></form> </div>
-          <div id="error-converter"></div>
-          <br>
-          <select name="currency" id="currency">
-            <option value="">Bitcoin(BTC)</option>
-            <option value="">Ethereum(ETH)</option>
-            <option value="">Ripple(XRP)</option>
-            <option value="">Dollar($)</option>
-          </select>
-          <span>Convert to</span>
-          <select name="currency1" id="currency1">
-            <option value="">Bitcoin(BTC)</option>
-            <option value="">Ethereum(ETH)</option>
-            <option value="">Ripple(XRP)</option>
-            <option value="">Dollar($)</option>
-          </select><br>
-          <span id="result"></span><br>
-          <div id="buttons-converter">
-            <button id="convert">Convert</button>
-            <button id="reset">Reset</button>
-          </div>
-        </div>
-
-
-
-        <div id="chart" class="box">
-          <figure>
-            <figcaption>
-              Cryptocurrency price
-            </figcaption> 
-            <div class="buttons"></div>
-            <div class="chart-currency-name"></div>
-          </figure>
-        </div>
+        <nav>
+          <ul class="nav-ul">
+            <li><a href="#other-main" class="nav-link">Main</a></li>
+            <li><a href="#table-main" class="nav-link">Table</a></li>
+            <li>
+              <svg viewbox="0 0 100 50" width="100" height="50" id="svg-coin">
+                <circle cx="40" cy="25" r="25" fill="#ffcc00" />
+                <line
+                  x1="34"
+                  y1="10"
+                  x2="34"
+                  y2="40"
+                  stroke="#34495e"
+                  stroke-width="3.5"
+                />
+                <path
+                  d="M34,10 C34,10 65,16 34,23 C34,23 70,30 34,40"
+                  stroke="#34495e"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  fill-opacity="0"
+                />
+              </svg>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
-  </section>
 
-  <section data-route="#table-main">
-    <div class="main">
-    <div id="table-container">
-        <div id="table">
-          <h2>10 most popular cryptocurrency</h2>
-          <div id="search-input-div">
-            <input type="text" id="search-input" name="search" placeholder="Search...">
-            <button id="search"><i class="fas fa-search"></i></button>
+    <div class="marquee"></div>
+    <main>
+      <section data-route="#other-main">
+        <div class="main">
+          <div class="main-info">
+            <article class="info">
+              <h2>Podcast</h2>
+              <audio controls>
+                <source src="podcast.mp3" type="audio/mp3" />
+              </audio>
+            </article>
+            <div id="converter" class="box right">
+              <h2>Cryptocurrency converter</h2>
+              <div id="input-conv">
+                <form id="amount">
+                  <label>Amount to convert:</label>
+                  <input
+                    type="text"
+                    required
+                    name="converter"
+                    id="amount_input"
+                    placeholder="Enter a number..."
+                  /><span> $</span>
+                </form>
+              </div>
+              <div id="error-converter"></div>
+              <br />
+              <div class="conv-curr">
+                <div>
+                  <span>From:</span>
+                  <select name="currency" id="currency">
+                    <option id="bitcoin" value="">Bitcoin(BTC)</option>
+                    <option id="etherium" value="">Ethereum(ETH)</option>
+                    <option id="ripple" value="">Ripple(XRP)</option>
+                  </select>
+                  <br /><br />
+                  <span>To: Dollars</span>
+                </div>
+                <br />
+                <div id="buttons-converter">
+                  <button id="convert">Convert</button>
+                  <button id="reset">Reset</button>
+                </div>
+                <span id="result"></span>
+              </div>
+            </div>
           </div>
-            <div id="my-table"></div> 
-            <div id="error-table"></div>
+          <div id="chart" class="main-chart box">
+            <figure>
+              <figcaption>Cryptocurrency price</figcaption>
+              <div class="buttons"></div>
+              <div class="chart-currency-name"></div>
+            </figure>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  </main>
+      </section>
 
-  <footer>
-    Svetlana Rashchupkina, CVUT FEL
-  </footer>
+      <section data-route="#table-main">
+        <div class="main">
+          <div id="table-container">
+            <div id="table">
+              <h2>10 most popular cryptocurrency</h2>
+              <div id="search-input-div">
+                <input
+                  type="text"
+                  id="search-input"
+                  name="search"
+                  placeholder="Search..."
+                />
+                <button id="search"><i class="fas fa-search"></i></button>
+              </div>
+              <div id="my-table"></div>
+              <div id="error-table"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
-<script src="marquee.js"></script>
-<script src="svg.js"></script>
-<script src="converter.js"></script>
-<script src="validate.js"></script>
-<script src="table.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="geolocation.js"></script>
-<script src="audio.js"></script>
-<script src="index.js"></script> 
-<script src="offline.js"></script> 
+    <footer>Svetlana Rashchupkina</footer>
 
-</body> 
+    <script src="js/constants.js"></script>
+    <script src="js/marquee.js"></script>
+    <script src="js/pieChart.js"></script>
+    <script src="js/converter.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/index.js"></script>
+  </body>
 </html>

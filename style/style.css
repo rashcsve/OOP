@@ -1,21 +1,17 @@
-
-
 body {
-    /*font-family: 'Roboto', sans-serif;*/
-    font-family: 'Montserrat', sans-serif;
-    margin:0;
-    max-height: 100vh;
-    color: #34495e;
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  max-height: 100vh;
+  color: #34495e;
 }
-
-
 
 /* NAVIGATION */
 #nav-background {
   width: 100%;
   background-color: white;
   border-bottom: 1px solid #ddd;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 #nav-container {
@@ -29,8 +25,6 @@ body {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;*/
   justify-content: space-between;
-
-
 }
 
 #nav-header {
@@ -74,7 +68,6 @@ body {
   display: flex;
 }
 
-
 .nav-link {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -94,7 +87,6 @@ body {
 
 .nav-link:hover {
   background-color: #f1f1f1;
-
 }
 
 #svg-coin {
@@ -119,7 +111,6 @@ body {
 
 /* MOBILE MENU */
 @media screen and (max-width: 600px) {
-
   #nav-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -127,7 +118,6 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     margin-left: 1em;
-
   }
   .nav-ul {
     display: block;
@@ -141,16 +131,14 @@ body {
     padding-bottom: 0;
   }
 
-
   .nav-link {
     padding: 1rem 0;
     font-size: 1.3rem;
     border-bottom: 1px solid #f4f4f4;
-
   }
 
   .main {
-    min-width: 40%; 
+    min-width: 40%;
   }
 
   .buttons {
@@ -161,8 +149,6 @@ body {
   #table {
     min-width: 50%;
   }
-
-
 }
 /* END MOBILE MENU */
 
@@ -177,9 +163,9 @@ h5 {
 /* --------- MAIN ----------*/
 section.is-visible {
   display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-grow: 1;
   min-height: 300px;
@@ -191,9 +177,9 @@ section {
 
 .main {
   display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -203,18 +189,16 @@ section {
 
 .info {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   align-items: center;
   align-content: center;
-  justify-content: space-around;
 }
 
-.main-menu{
+.main-menu {
   display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
@@ -223,7 +207,14 @@ section {
   justify-content: space-around;
 }
 
+.main-info {
+  display: flex;
+  justify-content: space-around;
+}
 
+.conv-curr {
+  margin-bottom: 24px;
+}
 
 /* --------- FOOTER ----------*/
 footer {
@@ -233,7 +224,7 @@ footer {
   margin-top: 10px;
   padding: 1rem;
   text-align: center;
-  color:#34495e;
+  color: #34495e;
   background-color: #f4f4f4;
 }
 
@@ -242,66 +233,64 @@ table,
 td,
 tr,
 th {
-    text-align: center;
+  text-align: center;
 }
 
 table {
-  border-collapse: collapse;
-  padding:2em;
-
+  padding: 2em;
 }
+
 #table-container {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 #table {
-    font-size: 0.9em;
-    position: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+  font-size: 0.9em;
+  position: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 td {
-    padding: 1em;
+  padding: 1em;
 }
 
 th {
-    background: #34495e;
-    color: white;
-    padding: 15px;
+  background: #34495e;
+  color: white;
+  padding: 15px;
 }
 
 th:hover {
-    color: #ffcc00;
-    cursor: pointer;
+  color: #ffcc00;
+  cursor: pointer;
 }
 
 .positive {
-    color: green;
+  color: green;
 }
 
 .negative {
-    color: red;
+  color: red;
 }
 
 #search {
-    border: none;
-    background-color: #34495e;
-    color: white;
-    width: 60px;
-    font-size: 1em;  
+  border: none;
+  background-color: #34495e;
+  color: white;
+  width: 60px;
+  font-size: 1em;
 }
 
 #search:hover {
-    color: #ffcc00;
-    cursor: pointer;
+  color: #ffcc00;
+  cursor: pointer;
 }
 
 #search-input {
-    font-size: 1.5em;
-} 
+  font-size: 1.5em;
+}
 
 #search-input-div {
   display: flex;
@@ -311,47 +300,53 @@ th:hover {
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 #error-table {
   text-align: center;
 }
 
-
 /* --------- MARQUEE ----------*/
-.marquee{
-width: 99.4%;
-white-space:nowrap;
-overflow:hidden;
-background-color: #34495e;
-margin: 5px;
-border-radius: 1%;
+.marquee {
+  width: 99.4%;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #34495e;
+  margin: 5px;
+  border-radius: 1%;
 }
- 
-.marquee span {
-padding: 10px;
-color: white;
-font-size:25px;
-display:inline-block;
-padding-left:100%;
 
--webkit-animation: marquee 50s infinite linear;
-animation: marquee 50s infinite linear;
+.marquee span {
+  padding: 10px;
+  color: white;
+  font-size: 25px;
+  display: inline-block;
+  padding-left: 100%;
+
+  -webkit-animation: marquee 50s infinite linear;
+  animation: marquee 50s infinite linear;
 }
- 
+
 @-webkit-keyframes marquee {
-0%{-webkit-transform: translate(0, 0);}
-100%{-webkit-transform: translate(-100%, 0);}
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(-100%, 0);
+  }
 }
-@keyframes marquee{
-0%{transform: translate(0, 0);}
-100%{transform: translate(-100%, 0)}
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
 }
 #table {
   display: inline-block;
 }
-
 
 /* ------------ CHART ------------ */
 .chart circle {
@@ -359,13 +354,13 @@ animation: marquee 50s infinite linear;
   stroke: red;
   stroke-width: 50;
   stroke-dasharray: 0 160;
-  transition: stroke-dasharray .3s ease;
+  transition: stroke-dasharray 0.3s ease;
 }
 
 .chart {
   margin: 0 auto;
   -ms-transform: rotate(-90deg);
-   -moz-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -377,7 +372,7 @@ animation: marquee 50s infinite linear;
 .buttons {
   display: flex;
   justify-content: center;
-  margin:20px;
+  margin: 20px;
 }
 
 button {
@@ -391,24 +386,22 @@ button {
   padding: 5px 10px;
   outline: none;
   border-radius: 2px;
-   -webkit-transition: background-color .1s ease, color .2s ease;
-    -moz-transition: background-color .1s ease, color .2s ease;
-     -ms-transition: background-color .1s ease, color .2s ease;
-     -o-transition: background-color .1s ease, color .2s ease;
-  transition: background-color .1s ease, color .2s ease;
+  -webkit-transition: background-color 0.1s ease, color 0.2s ease;
+  -moz-transition: background-color 0.1s ease, color 0.2s ease;
+  -ms-transition: background-color 0.1s ease, color 0.2s ease;
+  -o-transition: background-color 0.1s ease, color 0.2s ease;
+  transition: background-color 0.1s ease, color 0.2s ease;
   color: #444;
   text-decoration: none;
   font-weight: 600;
-
-  &:last-of-type {
-    margin-right: 0;
-  }
+}
+button:last-of-type {
+  margin-right: 0;
 }
 
 button:hover {
-  color:red;
+  color: red;
 }
-
 
 figcaption {
   margin-bottom: 10px;
@@ -417,17 +410,16 @@ figcaption {
   text-align: center;
 }
 
-
 /* ---------------- CONVERTER ------------*/
 .chart-currency-name {
   display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15px;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
 }
 
 #buttons-converter {
-  margin:0;
+  margin: 0;
   display: flex;
   justify-content: center;
 }
@@ -440,15 +432,19 @@ figcaption {
 #result {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
-  color:black;
+  margin-top: 8px;
+  color: black;
+  color: red;
 }
-
 
 label.error {
   color: red;
-  padding:10px 20px 1px 20px;
+  padding: 10px 20px 1px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.conv-curr {
+  text-align: center;
 }
