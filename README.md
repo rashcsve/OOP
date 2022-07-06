@@ -5,7 +5,7 @@ The project is 4 years old, it started as a school project where I learned JS ba
 
 
 ## Use Cases
-The application has
+The application has:
 - a calculator to convert an amount in cryptocurrency to dollars
 - a custom svg pie chart with some cryptocurrencies and their prices with custom audio sounds on click
 - a podcast
@@ -13,7 +13,6 @@ The application has
 - a beautiful custom marque bar made with css transition to satisfy users
 - a much more beatiful custom svg icon imitating bitcoin in navigtation to satisfy users even more
  
- The application has two pages:
  
  **Main page**
  ![Screenshot 2022-07-06 at 15 28 31](https://user-images.githubusercontent.com/43743508/177562883-6974cd9b-e813-4999-8863-0219db7316bb.png)
