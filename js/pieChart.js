@@ -1,91 +1,87 @@
 class PieChart {
   constructor(data) {
-    this._cryptocoins = data;
-    this._total = 0;
+    this.cryptocoins = data || [];
+    this.total = 0;
+    this.buttonsContainer = document.querySelector(".buttons");
+    this.figureContainer = document.querySelector("figure");
+    this.chartLabel = document.querySelector(".chart-currency-name");
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   init() {
-    this._createSvgElement();
-    this._setTotal();
+    if (!this.cryptocoins.length) {
+      console.error("No cryptocurrency data available for PieChart.");
+      return;
+    }
 
-    const buttons = document.querySelector(".buttons");
-    this._setButtons(buttons);
-
-    buttons.addEventListener("click", (e) => {
-      if (e.target != e.currentTarget) {
-        const el = e.target;
-        const price = el.getAttribute("data-price");
-        this._setChartPart(price);
-
-        let name = el.getAttribute("data-name");
-        this._setLabel(name, price);
-      }
-      e.stopPropagation();
-    });
+    this.createSvgElement();
+    this.calculateTotal();
+    this.renderButtons();
+    this.attachEventListeners();
   }
 
-  _createSvgElement() {
+  createSvgElement() {
     const xmlns = "http://www.w3.org/2000/svg";
 
-    let svg = document.createElementNS(xmlns, "svg");
-    svg.setAttributeNS(null, "width", 100);
-    svg.setAttributeNS(null, "height", 100);
-    svg.setAttribute("class", "chart");
+    const svg = document.createElementNS(xmlns, "svg");
+    svg.setAttribute("width", 100);
+    svg.setAttribute("height", 100);
+    svg.classList.add("chart");
 
-    let circle = document.createElementNS(xmlns, "circle");
-    circle.setAttributeNS(null, "cx", 50);
-    circle.setAttributeNS(null, "cy", 50);
-    circle.setAttributeNS(null, "r", 25);
-    circle.setAttribute("class", "pie");
+    const circle = document.createElementNS(xmlns, "circle");
+    circle.setAttribute("cx", 50);
+    circle.setAttribute("cy", 50);
+    circle.setAttribute("r", 25);
+    circle.classList.add("pie");
+    
     svg.appendChild(circle);
-
-    const figure = document.querySelector("figure");
-    figure.appendChild(svg);
+    this.figureContainer.appendChild(svg);
   }
 
-  _setTotal() {
-    this._cryptocoins.forEach((coin) => {
-      this._total += Number(parseFloat(coin.price_usd).toFixed(2));
-    });
-    this._total = this._total.toFixed(2);
+  calculateTotal() {
+    this.total = this.cryptocoins.reduce((sum, coin) => sum + parseFloat(coin.price_usd || 0), 0);
   }
 
-  _setButtons(buttons) {
-    this._cryptocoins.forEach((coin) => {
-      let button = document.createElement("button");
-      button.innerHTML = coin.name;
-      button.setAttribute("data-name", coin.name);
-      button.setAttribute("data-price", parseFloat(coin.price_usd).toFixed(2));
-
-      buttons.appendChild(button);
+  renderButtons() {
+    this.cryptocoins.forEach((coin) => {
+      const button = document.createElement("button");
+      button.textContent = coin.name;
+      button.dataset.name = coin.name;
+      button.dataset.price = parseFloat(coin.price_usd || 0).toFixed(2);
+      
+      this.buttonsContainer.appendChild(button);
     });
   }
 
-  _calculateChartSpace(num) {
-    return (num * 160) / this._total;
+  attachEventListeners() {
+    this.buttonsContainer.addEventListener("click", this.handleButtonClick);
   }
 
-  _setChartPart(price) {
-    const fixedNumber = this._calculateChartSpace(price);
-    const result = fixedNumber + " " + 160;
+  removeEventListeners() {
+    this.buttonsContainer.removeEventListener("click", this.handleButtonClick);
+  }
+
+  handleButtonClick(event) {
+    if (event.target !== event.currentTarget) {
+      const { name, price } = event.target.dataset;
+      this.updateChart(price);
+      this.updateLabel(name, price);
+    }
+  }
+
+  calculateChartSpace(price) {
+    return (parseFloat(price) * 160) / this.total;
+  }
+
+  updateChart(price) {
     const pie = document.querySelector(".pie");
-    pie.style.strokeDasharray = result;
+    if (pie) {
+      pie.style.strokeDasharray = `${this.calculateChartSpace(price)} 160`;
+    }
   }
 
-  _setLabel(name, price) {
-    const p = (price * 100) / this._total;
-    const pie = document.querySelector(".chart-currency-name");
-    pie.innerHTML = "";
-    const stringSpan = document.createElement("span");
-    const value =
-      name +
-      ": " +
-      p.toFixed(2) +
-      "%" +
-      " - " +
-      parseFloat(price).toFixed(2) +
-      "$";
-    stringSpan.innerHTML = value;
-    pie.appendChild(stringSpan);
+  updateLabel(name, price) {
+    const percentage = ((parseFloat(price) * 100) / this.total).toFixed(2);
+    this.chartLabel.innerHTML = `<span>${name}: ${percentage}% - ${parseFloat(price).toFixed(2)}$</span>`;
   }
 }

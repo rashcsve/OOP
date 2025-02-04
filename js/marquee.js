@@ -1,32 +1,27 @@
 class Marquee {
   constructor(data) {
-    this._cryptocoins = data;
+    this.cryptocoins = data || [];
+    this.marqueeContainer = document.querySelector(".marquee");
   }
 
   init() {
-    let runningString = "";
-    this._cryptocoins.forEach((coin) => {
-      runningString += this.buildStringPart(coin);
-    });
+    if (!this.cryptocoins.length) {
+      console.error("No cryptocurrency data available for Marquee.");
+      return;
+    }
+    if (!this.marqueeContainer) {
+      console.error("Marquee container not found.");
+      return;
+    }
 
+    const runningString = this.cryptocoins.map(this.buildStringPart).join(" ");
     const stringSpan = document.createElement("span");
     stringSpan.innerHTML = runningString;
 
-    const marquee = document.querySelector(".marquee");
-    marquee.appendChild(stringSpan);
+    this.marqueeContainer.appendChild(stringSpan);
   }
 
   buildStringPart(coin) {
-    return (
-      coin.name +
-      "(" +
-      coin.symbol +
-      ")" +
-      ":" +
-      " " +
-      parseFloat(coin.price_usd).toFixed(2) +
-      "$" +
-      "; "
-    );
+    return `${coin.name} (${coin.symbol}): ${parseFloat(coin.price_usd || 0).toFixed(2)}$;`;
   }
 }

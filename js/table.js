@@ -1,110 +1,75 @@
 class Table {
-  _table = null;
   constructor(data) {
-    this._cryptocoins = data;
+    this.cryptocoins = data || [];
+    this.tableContainer = document.getElementById("my-table");
   }
+
   init() {
-    this._table = document.getElementById("my-table");
-    this._paintTable();
+    if (!this.tableContainer) {
+      console.error("Table container not found.");
+      return;
+    }
+    this.paintTable();
 
     const search = document.getElementById("search");
     search.addEventListener("click", (event) => {
       event.preventDefault();
-      this._search();
+      this.search();
     });
+
     const searchInput = document.getElementById("search-input");
     searchInput.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        this._search();
+        this.search();
       }
     });
   }
 
-  _paintTable() {
-    let table = document.createElement("table");
-    let thead = document.createElement("thead");
-    let tbody = document.createElement("tbody");
-    // Creating and adding data to first row of the table
-    let row_1 = document.createElement("tr");
-    let heading_1 = document.createElement("th");
-    heading_1.innerHTML = "No.";
-    let heading_2 = document.createElement("th");
-    heading_2.innerHTML = "Name";
-    let heading_3 = document.createElement("th");
-    heading_3.innerHTML = "Symbol";
-    let heading_4 = document.createElement("th");
-    heading_4.innerHTML = "Price USD";
+  paintTable() {
+    const table = document.createElement("table");
+    const thead = document.createElement("thead");
+    const tbody = document.createElement("tbody");
 
-    row_1.appendChild(heading_1);
-    row_1.appendChild(heading_2);
-    row_1.appendChild(heading_3);
-    row_1.appendChild(heading_4);
-    thead.appendChild(row_1);
+    const headerRow = document.createElement("tr");
+    const headers = ["No.", "Name", "Symbol", "Price USD"];
+    headers.forEach((text) => {
+      const th = document.createElement("th");
+      th.textContent = text;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
 
-    const span = document.getElementById("span1");
-    CRYPTOCOINS.forEach((coin) => {
-      let tr = document.createElement("tr");
-      let td_1 = document.createElement("td");
-      td_1.innerHTML = coin.rank;
-      let td_2 = document.createElement("td");
-      td_2.innerHTML = coin.name;
-      let td_3 = document.createElement("td");
-      td_3.innerHTML = coin.symbol;
-      let td_4 = document.createElement("td");
-      td_4.innerHTML = coin.price_usd;
-
-      // // obarvim cifry, pokud se kurz zmenil
-      // if (coin.percent_change_1h > 0) {
-      //   change1h.addClass("positive");
-      // } else {
-      //   change1h.addClass("negative");
-      // }
-      // if (coin.percent_change_24h > 0) {
-      //   change24h.addClass("positive");
-      // } else {
-      //   change24h.addClass("negative");
-      // }
-      // if (coin.percent_change_7d > 0) {
-      //   change7d.addClass("positive");
-      // } else {
-      //   change7d.addClass("negative");
-      // }
-      tr.appendChild(td_1);
-      tr.appendChild(td_2);
-      tr.appendChild(td_3);
-      tr.appendChild(td_4);
+    this.cryptocoins.forEach((coin) => {
+      const tr = document.createElement("tr");
+      const values = [coin.rank, coin.name, coin.symbol, parseFloat(coin.price_usd || 0).toFixed(2)];
+      values.forEach((text) => {
+        const td = document.createElement("td");
+        td.textContent = text;
+        tr.appendChild(td);
+      });
       tbody.appendChild(tr);
     });
+
     table.appendChild(thead);
     table.appendChild(tbody);
-
-    this._table.appendChild(table);
+    this.tableContainer.appendChild(table);
   }
 
-  _search() {
-    const searchInput = document.getElementById("search-input");
-    const value = searchInput.value.toLowerCase();
-    const rows = document.querySelectorAll("tr");
-    // Convert rows NodeList to an array
-    let rowsArray = Array.from(rows);
-    rowsArray.shift();
-    const filteredRows = rowsArray.filter((row, index) => {
-      const rowValue = row.innerText.toLowerCase();
-      if (rowValue.includes(value)) {
-        rows[index + 1].style.display = "table-row";
-      } else {
-        rows[index + 1].style.display = "none";
-      }
-      return rowValue.includes(value);
-    });
+  search() {
+    const searchInput = document.getElementById("search-input").value.toLowerCase();
+    const rows = Array.from(this.tableContainer.querySelectorAll("tbody tr"));
     const error = document.getElementById("error-table");
-    if (!filteredRows.length) {
-      this._table.style.display = "none";
-      error.innerHTML = "There is no such cryptocurrency...";
-    } else {
-      this._table.style.display = "block";
-      error.innerHTML = "";
-    }
+    let found = false;
+
+    rows.forEach((row) => {
+      const rowText = row.innerText.toLowerCase();
+      const match = rowText.includes(searchInput);
+      row.style.display = match ? "table-row" : "none";
+      if (match) found = true;
+    });
+
+    this.tableContainer.style.display = found ? "block" : "none";
+    error.textContent = found ? "" : "There is no such cryptocurrency...";
   }
 }

@@ -1,6 +1,6 @@
 class App {
-  _cryptocoins;
   constructor() {
+    this._cryptocoins = [];
     this._pages = document.querySelectorAll("section");
     this.init();
   }
@@ -11,53 +11,29 @@ class App {
 
   init() {
     this.setCryptocoins(CRYPTOCOINS);
-    this._route();
-    this._start();
+    this._handleRouting();
+    this._startComponents();
   }
 
-  _route() {
-    const hash = window.location.hash;
-    console.log(hash);
-    switch (hash) {
-      case "#table-main":
-        this._changePage(hash);
-        break;
-      case "#other-main":
-      default:
-        this._changePage("#other-main");
-        break;
-    }
+  _handleRouting() {
+    const currentRoute = window.location.hash;
+    this._changePage(currentRoute === "#table-main" ? currentRoute : "#other-main");
   }
 
-  _changePage(section) {
-    this._pages.forEach((page) => {
-      console.log(page);
-      if (page.getAttribute("data-route") === section) {
-        page.classList.add("is-visible");
-      } else {
-        page.classList.remove("is-visible");
-      }
+  _changePage(targetPage) {
+    this._pages.forEach(page => {
+      page.classList.toggle("is-visible", page.getAttribute("data-route") === targetPage);
     });
   }
 
-  _start() {
-    // Route Changes
-    window.addEventListener("popstate", (event) => {
-      console.log(event);
-      this._route();
+  _startComponents() {
+    // Listen for route changes
+    window.addEventListener("popstate", () => this._handleRouting());
+
+    // Initialize components
+    [Marquee, PieChart, Converter, Table].forEach(Component => {
+      new Component(this._cryptocoins).init();
     });
-
-    const m = new Marquee(this._cryptocoins);
-    m.init();
-
-    const svg = new PieChart(this._cryptocoins);
-    svg.init();
-
-    const c = new Converter(this._cryptocoins);
-    c.init();
-
-    const t = new Table(this._cryptocoins);
-    t.init();
   }
 }
 
